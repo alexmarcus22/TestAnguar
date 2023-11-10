@@ -16,6 +16,8 @@ import { InformationComponent } from './components/information/information.compo
 import { InformationModalComponent } from './components/information/information-modal/information-modal.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { MasiniComponent } from './components/masini/masini.component';
+import { PersoaneComponent } from './components/confirm-dialog/persoane/persoane.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material
     HeaderComponent,
     InformationComponent,
     InformationModalComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    MasiniComponent,
+    PersoaneComponent
   ],
   imports: [
     BrowserModule,
