@@ -19,15 +19,15 @@
             <th width="100px" rowspan='2'>Nr. Crt.</th>
             <th width="200px">Nume</th>
             <th width="200px">Prenume</th>
-            <th>cnp</th>
-            <th>Varsta</th>
+            <th width="200px">cnp</th>
+            <th width="200px">Varsta</th>
             <th>Masini</th>
             <th rowspan='2' width='70px'></th>
           </tr>
           <tr>
-            <th><input class='form-control input-xs' placeholder='Căutare...'></th>
-            <th><input class='form-control input-xs' placeholder='Căutare...'></th>
-            <th><input class='form-control input-xs' placeholder='Căutare...'></th>
+            <th><input class='form-control input-xs' placeholder='Căutare...' (keyup)="applyFilterNume($event)"></th>
+            <th><input class='form-control input-xs' placeholder='Căutare...' (keyup)="applyFilterPrenume($event)"></th>
+            <th><input class='form-control input-xs' placeholder='Căutare...' (keyup)="applyFilterCNP($event)"></th>
           </tr>
         </thead>
       </table>
@@ -44,11 +44,21 @@
           <tbody>
             <tr *ngFor='let r of persoane.slice(0, limit)' (dblclick)='addEdit(r.id)' class='cursor-pointer'>
               <td width="100px" class='text-center'>{{r.id}}</td>
-              <td width="200px">{{r.firstname}}</td>
-              <td width="200px">{{r.lastname}}</td>
-              <td class='text-center'>{{r.cnp}}</td>
-              <td class='text-center'>{{r.age}}</td>
-              <td class='text-center'>{{r.cars}}</td>
+              <td width="200px" class='text-center'>{{r.firstname}}</td>
+              <td width="200px" class='text-center'>{{r.lastname}}</td>
+              <td class='text-center' width="200px">{{r.cnp}}</td>
+              <td class='text-center' width="200px">{{r.age}}</td>
+              <td class='text-center'>
+                <ul>
+                  <li *ngFor="let car of r.cars | filterCars:masini">
+                    {{car.brandname}}
+                    {{car.modelname}}
+                    {{car.year}}
+                    {{car.capacity}}
+                    {{car.tax}}
+                  </li>
+                </ul>
+              </td>
               <td width='35px' (click)='addEdit(r.id)' class='text-center' matTooltip='Modificare'
                 matTooltipPosition='left'>
                 <fa-icon class='text-primary' [icon]='faEdit'></fa-icon>

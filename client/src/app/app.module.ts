@@ -8,8 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-import { ToastrModule } from 'ngx-toastr';
-
+import { ToastrModule} from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InformationComponent } from './components/information/information.component';
@@ -21,6 +20,8 @@ import { PersoanaComponent } from './components/persoana/persoana.component';
 import { MasinaComponent } from './components/masina/masina.component';
 import { MasinaModalComponent } from './components/masina/masina-modal/masina-modal.component';
 import { PersoanaModalComponent } from './components/persoana/persoana-modal/persoana-modal.component';
+import { FilterCarsPipe } from './filter-cars.pipe';
+import { FilterTablePipe } from './filter-table.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { PersoanaModalComponent } from './components/persoana/persoana-modal/per
     PersoanaComponent,
     MasinaComponent,
     MasinaModalComponent,
-    PersoanaModalComponent
+    PersoanaModalComponent,
+    FilterCarsPipe,
+    FilterTablePipe,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,6 @@ export class PersoanaModalComponent implements OnInit {
   @Input() id_persoana: number | undefined;
   modal = {} as any;
   masini: any = [];
-  selectedCar: number = 1;
 
   constructor(private _spinner: NgxSpinnerService, public activeModal: NgbActiveModal, private toastr: ToastrService) {
   }

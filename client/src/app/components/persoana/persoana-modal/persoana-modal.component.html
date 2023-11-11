@@ -32,7 +32,7 @@
   <div class='row'>
     <label class='col-2 control-label'>Masini*</label>
     <div class='col-9'>
-      <ng-select [(ngModel)]="selectedCar">
+      <ng-select [(ngModel)]="modal.cars" [multiple]="true">
         <ng-option *ngFor="let masina of masini" [value]="masina.id">{{masina.brandname}}</ng-option>
       </ng-select>
     </div>

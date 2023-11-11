@@ -17,6 +17,8 @@ export class PersoanaComponent implements OnInit {
   faTrashAlt = faTrashAlt; faEdit = faEdit; faChevronUp = faChevronUp; faPlus = faPlus;
   limit: number = 70; showBackTop: string = '';
   persoane: any = [];
+  toatePersoanele: any = [];
+  masini: any = [];
 
 
   constructor(private _modal: NgbModal, private _spinner: NgxSpinnerService, private toastr: ToastrService) { SET_HEIGHT('view', 20, 'height'); }
@@ -27,8 +29,13 @@ export class PersoanaComponent implements OnInit {
 
   loadData = (): void => {
     this._spinner.show();
+    axios.get('/api/masina').then(({ data }) => {
+      this.masini = data;
+      this._spinner.hide();
+    }).catch(() => this.toastr.error('Eroare la preluarea informațiilor!'));
     axios.get('/api/persoana').then(({ data }) => {
       this.persoane = data;
+      this.toatePersoanele = data;
       this._spinner.hide();
     }).catch(() => this.toastr.error('Eroare la preluarea informațiilor!'));
   }
@@ -55,6 +62,36 @@ export class PersoanaComponent implements OnInit {
 
   onResize(): void {
     SET_HEIGHT('view', 20, 'height');
+  }
+
+  applyFilterNume(filterValue: any) {
+    let filterValueLower = filterValue.target.value.toLowerCase();
+    if (filterValue === '') {
+      this.persoane = this.toatePersoanele;
+    }
+    else {
+      this.persoane = this.toatePersoanele.filter((p: any) => p.firstname.includes(filterValueLower))
+    }
+  }
+
+  applyFilterPrenume(filterValue: any) {
+    let filterValueLower = filterValue.target.value.toLowerCase();
+    if (filterValue === '') {
+      this.persoane = this.toatePersoanele;
+    }
+    else {
+      this.persoane = this.toatePersoanele.filter((p: any) => p.lastname.includes(filterValueLower))
+    }
+  }
+
+  applyFilterCNP(filterValue: any) {
+    let filterValueLower = filterValue.target.value.toLowerCase();
+    if (filterValue === '') {
+      this.persoane = this.toatePersoanele;
+    }
+    else {
+      this.persoane = this.toatePersoanele.filter((p: any) => p.cnp.includes(filterValueLower))
+    }
   }
 
   showTopButton(): void {
