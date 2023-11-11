@@ -1,0 +1,61 @@
+<div class='modal-header'>
+  <h4 class='modal-title'>{{id_masina ? 'Modificare' : 'Adăugare'}} mașină</h4>
+</div>
+
+<form>
+  <div class='modal-body'>
+    <div class='row'>
+      <label class='col-2 control-label'>Denumire brand*</label>
+      <div class='col-9'>
+        <input required name="brandname" [(ngModel)]='modal.brandname' class='form-control'
+          placeholder='Denumire brand...' maxlength='255' minlength="4" #brandname="ngModel" />
+        <div *ngIf="brandname.invalid">
+          <div *ngIf="brandname.errors?.['minlength']">
+            Brand name must be at least 4 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <label class='col-2 control-label'>Denumire model*</label>
+      <div class='col-9'>
+        <input required name="modelname" [(ngModel)]='modal.modelname' class='form-control'
+          placeholder='Denumire model...' maxlength='255' #modelname="ngModel" minlength="4" />
+        <div *ngIf="modelname.invalid">
+          <div *ngIf="modelname.errors?.['minlength']">
+            Model name must be at least 4 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <label class='col-2 control-label'>An Fabricatie*</label>
+      <div class='col-9'>
+        <input required name="year" [(ngModel)]='modal.year' class='form-control' placeholder='An Fabricatie...'
+          minlength='4' #year="ngModel" maxlength="4" />
+        <div *ngIf="year.invalid">
+          <div *ngIf="year.errors?.['minlength']">
+            Year must be at least 4 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <label class='col-2 control-label'>Capacitate cilindrica*</label>
+      <div class='col-9'>
+        <input required name="capacity" type="number" [(ngModel)]='modal.capacity' class='form-control'
+          placeholder='Capacitate cilindrica...' maxlength='4' #capacity="ngModel" minlength="1" />
+        <div *ngIf="capacity.invalid">
+          <div *ngIf="capacity.errors?.['minlength']">
+            Year must be at least 1 character long.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='modal-footer'>
+    <button type='button' class='btn btn-outline-dark' (click)='activeModal.dismiss()'>Renunță</button>
+    <button type='button' class='btn btn-success' (click)='save()'>Salvează</button>
+  </div>
+</form>

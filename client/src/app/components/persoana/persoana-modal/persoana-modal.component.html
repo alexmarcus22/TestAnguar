@@ -1,0 +1,45 @@
+<div class='modal-header'>
+  <h4 class='modal-title'>{{id_persoana ? 'Modificare' : 'Adăugare'}} persoană</h4>
+</div>
+
+<div class='modal-body'>
+  <div class='row'>
+    <label class='col-2 control-label'>Nume*</label>
+    <div class='col-9'>
+      <input required name="firstname" #name="ngModel" [(ngModel)]='modal.firstname' class='form-control'
+        placeholder='Nume...' maxlength='255' />
+      <div *ngIf="name.invalid">
+        <div *ngIf="name.errors?.['minlength']">
+          Name must be at least 4 characters long.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <label class='col-2 control-label'>Prenume*</label>
+    <div class='col-9'>
+      <input required name="lastname" #name="ngModel" [(ngModel)]='modal.lastname' class='form-control'
+        placeholder='Prenume...' maxlength='255' />
+    </div>
+  </div>
+  <div class='row'>
+    <label class='col-2 control-label'>cnp*</label>
+    <div class='col-9'>
+      <input required name="cnp" #name="ngModel" [(ngModel)]='modal.cnp' class='form-control' placeholder='cnp...'
+        maxlength='13' />
+    </div>
+  </div>
+  <div class='row'>
+    <label class='col-2 control-label'>Masini*</label>
+    <div class='col-9'>
+      <ng-select [(ngModel)]="selectedCar">
+        <ng-option *ngFor="let masina of masini" [value]="masina.id">{{masina.brandname}}</ng-option>
+      </ng-select>
+    </div>
+  </div>
+</div>
+
+<div class='modal-footer'>
+  <button type='button' class='btn btn-outline-dark' (click)='activeModal.dismiss()'>Renunță</button>
+  <button type='button' class='btn btn-success' (click)='save()'>Salvează</button>
+</div>

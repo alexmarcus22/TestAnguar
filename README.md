@@ -88,7 +88,7 @@
 1. Un tabel ce va conține următoarele coloane
   * Număr curent
   * Nume / prenume
-  * CNP
+  * cnp
   * Vârsta
   * Lista mașinilor aflate în proprietate
     * Denumire marcă / denumire model
@@ -102,11 +102,11 @@
   * Câmpuri
     * Nume* - string, maxlength 255
     * Prenume* - string, maxlength 255
-    * CNP* - string, maxlength 13
+    * cnp* - string, maxlength 13
     * Vârsta* - integer, maxlength 3
     * Select multiplu (ng-select multiple) pentru mașini
   * Funcționalitate
-    * Vârsta va fi calculată automat din CNP
+    * Vârsta va fi calculată automat din cnp
     * Câmpurile sunt obligatorii
     * Validare și afișare mesaj cu denumirea câmpului ce nu a fost completat
     * La apăsarea butonului adaugă, persoana va fi salvată în baza de date

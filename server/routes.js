@@ -1,12 +1,14 @@
 module.exports = app => {
   'use strict';
-  const express      = require("express");
-  const appPath      = __dirname + '/../client';
-  const path         = require('path');
-  const errors       = require('./errors');
+  const express = require("express");
+  const appPath = __dirname + '/../client';
+  const path = require('path');
+  const errors = require('./errors');
 
   /* LOGIN */
   app.use('/api/information', require('./routes/information')(app));
+  app.use('/api/persoana', require('./routes/persoana')(app));
+  app.use('/api/masina', require('./routes/masina')(app));
 
   app.route('*/:url(api|auth|components|app|bower_components|assets)/*').get(errors[404]);
 

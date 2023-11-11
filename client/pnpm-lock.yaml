@@ -63,7 +63,7 @@ dependencies:
     specifier: ^13.1.0
     version: 13.1.1(@angular/common@14.2.12)(@angular/core@14.2.12)(@angular/forms@14.2.12)(@angular/localize@14.2.12)(@popperjs/core@2.11.8)(rxjs@7.5.7)
   '@ng-select/ng-select':
-    specifier: ^9.0.2
+    specifier: ^9.1.0
     version: 9.1.0(@angular/common@14.2.12)(@angular/core@14.2.12)(@angular/forms@14.2.12)
   '@popperjs/core':
     specifier: ^2.11.6

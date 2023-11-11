@@ -30,7 +30,9 @@ module.exports = function getModels(sequelize, Sequelize) {
 
   const arr = [
     /************************ Information *********************/
-    {path: __dirname + '/information.js', sync: true},
+    { path: __dirname + '/information.js', sync: true },
+    { path: __dirname + '/masina.js', sync: true },
+    { path: __dirname + '/persoana.js', sync: true },
   ];
 
   const syncTables = [];
@@ -49,9 +51,9 @@ module.exports = function getModels(sequelize, Sequelize) {
 
     if (!tmp) {
       const model = require(fileTree[i])(sequelize, Sequelize);
-      let modelName = fileTree[i].substring(fileTree[i].lastIndexOf('/') + 1, fileTree[i].indexOf('.js'));
-      modelName = modelName.charAt(0).toUpperCase() + modelName.slice(1);
-      console.error('Nu este introdusă ruta pentru modelul: ' + modelName);
+      let modelname = fileTree[i].substring(fileTree[i].lastIndexOf('/') + 1, fileTree[i].indexOf('.js'));
+      modelname = modelname.charAt(0).toUpperCase() + modelname.slice(1);
+      console.error('Nu este introdusă ruta pentru modelul: ' + modelname);
 
       syncTables.push(model);
     }
@@ -60,7 +62,7 @@ module.exports = function getModels(sequelize, Sequelize) {
   if (syncTables.length && process.env.RUN_CRON === 'true') {
     _.each(syncTables, file => {
       console.info(file);
-      file.sync({alter: true, logging: false});
+      file.sync({ alter: true, logging: false });
     });
   }
 
